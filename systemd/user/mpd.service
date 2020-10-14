@@ -8,7 +8,7 @@ Requires=mpd.socket
 Type=notify
 Environment=XDG_CONFIG_HOME=%E
 Environment=XDG_CACHE_HOME=%C
-ExecStartPre=%E/mpd/mpd.conf_autogen.sh
+ExecStartPre=%E/mpd/mpd.conf_autogen
 ExecStart=/usr/bin/mpd --no-daemon
 
 # Enable this setting to ask systemd to watch over MPD, see
