@@ -6,6 +6,3 @@ mkdir -p "${XDG_CONFIG_HOME}/mpd"
 mkdir -p "${XDG_CONFIG_HOME}/systemd"
 cp -r "${ROOT_DIR}"/mpd/* "${XDG_CONFIG_HOME}/mpd/"
 cp -r "${ROOT_DIR}"/systemd/* "${XDG_CONFIG_HOME}/systemd/"
-
-systemctl --user daemon-reload
-systemctl --user start mpd

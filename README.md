@@ -1,16 +1,22 @@
 # My MPD configuration depends on systemd
 
 ## Installation 
-```bash
-XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
-mkdir -p "${XDG_CONFIG_HOME}/mpd"
-mkdir -p "${XDG_CONFIG_HOME}/systemd/user"
-cp -r ./mpd/* "${XDG_CONFIG_HOME}/mpd"
-cp ./systemd/user/* "${XDG_CONFIG_HOME}/systemd/user"
 
+```bash
+# If system's mpd is running, it stops.
+sudo systemctl stop mpd.socket
+sudo systemctl stop mpd
+
+# Clone and install.
+git clone https://github.com/acintosh/config_mpd
+cd config_mpd
+bash ./install.sh
 systemctl --user daemon-reload
+
+# Start user's mpd.
 systemctl --user start mpd
 ```
+
 
 ## Usage
 ### `mpc`
