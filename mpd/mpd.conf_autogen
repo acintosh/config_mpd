@@ -2,7 +2,7 @@
 
 # If this script has been updated, regenerate the configuration file.
 # If the script has not been updated, it is terminated.
-[[ $XDG_CONFIG_HOME/mpd/conf_autogen -ot $XDG_CONFIG_HOME/mpd/mpd.conf ]] && exit
+[[ $XDG_CONFIG_HOME/mpd/conf_autogen -nt $XDG_CONFIG_HOME/mpd/mpd.conf ]] && exit
 
 MPD_CACHE_DIR="$XDG_CACHE_HOME/mpd"
 MPD_RUNTIME_DIR="$XDG_RUNTIME_DIR/mpd"
@@ -11,6 +11,7 @@ echo XDG_CONFIG_HOME=$XDG_CONFIG_HOME
 echo MPD_RUNTIME_DIR=$MPD_RUNTIME_DIR
 echo MPD_CACHE_DIR=$MPD_CACHE_DIR
 
+[[ ! -d $MPD_RUNTIME_DIR ]] && mkdir -p $MPD_RUNTIME_DIR
 [[ ! -d $MPD_CACHE_DIR ]] && mkdir -p $MPD_CACHE_DIR
 
 cat << EOS > $XDG_CONFIG_HOME/mpd/mpd.conf
@@ -38,7 +39,7 @@ audio_output {
     name "no music no life"
 }
 
-bind_to_address "$MPD_RUNTIME_DIR/mpd/socket"
+bind_to_address "$MPD_RUNTIME_DIR/socket"
 
 #pid_file "$MPD_RUNTIME_DIR/mpd.pid"
 
